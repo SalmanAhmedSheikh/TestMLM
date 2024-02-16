@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = localizer["Wallets"];
+    ViewData["Caption"] = localizer[""];
+}
+@*  <div class="col-sm-12" style="padding:20px">
+    @if ((AuthorizationService.AuthorizeAsync(User, Permissions.Transactions.Create)).Result.Succeeded)
+    {
+    <a onclick="jQueryModalGet('/app/transaction/OnGetCreateOrEdit','Create Brand')" class="btn bg-success">
+    <i class="fa fa-plus-square"></i> Create
+    </a>
+    }
+    </div> *@
+<div class="card w-masterhead">
+    <div class="row align-items-center p-5 text-white">
+        <div class="col d-md-flex align-items-center" style="gap: 20px;">
+            <img src="/images/ewallet.gif" width="120" class="img-fluid mr-4 img-circle">
+            <h4>Community Bonus Wallet</h4>
+            <h1>0</h1> <span>Points</span>
+        </div>
+        <div class="col text-right">
+            <button type="button" class="btn btn-outline-light">
+                <i class="fas fa-solid fa-upload"></i> Withdraw
+            </button>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div id="viewAll" class="card-body table-responsive"></div>
+    </div>
+
+</div>
+    </>
+@section Scripts
+{
+    <script src="~/js/site.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#walletsTable").DataTable();
+            loadData();
+            $('#reload').on('click', function () {
+                loadData();
+            });
+        });
+        function loadData() {
+            $('#viewAll').load('/account/wallets/LoadAll');
+        }
+    </script>
+}

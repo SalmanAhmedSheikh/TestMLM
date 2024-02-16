@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = localizer["Downloads"];
+    ViewData["Caption"] = localizer["Manage Downloads here"];
+}
+@using AspNetCoreHero.Boilerplate.Web.Areas.App.Models
+@model DownloadsViewModel
+<div class="card">
+    @* <div class="col-sm-12" style="padding:20px">
+        @if ((AuthorizationService.AuthorizeAsync(User, Permissions.Brands.Create)).Result.Succeeded)
+        {
+            <a onclick="jQueryModalGet('/app/brand/OnGetCreateOrEdit','Create Brand')" class="btn bg-success">
+                <i class="fa fa-plus-square"></i> Create
+            </a>
+        }
+    </div> *@
+    @* <div id="viewAll" class="card-body table-responsive">
+    </div> *@
+    <div class="row">
+        <div class="col-md-4 p-4">
+            <div class="card card-comments card-box shadow card-block">
+                <div class="download-card d-flex flex-column">
+                    <img src="~/images/pdf.png" width="80" />
+                    <span class="doc-type">Document (PDF)</span>
+                    <h5 class="doc-name">Mining Race - ICONX announcement</h5>
+                    <span class="doc-size">3.19 MB</span>
+                    <a href="~/images/Mining-Race-ICONX-announcement.pdf" target="_blank" class="btn btn-primary"><i class="fas fa-solid fa-download"></i> Download</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 p-4">
+            <div class="card card-comments card-box shadow card-block">
+                <div class="download-card d-flex flex-column">
+                    <img src="~/images/gallery.png" width="80" />
+                    <span class="doc-type">Image (PNG)</span>
+                    <h5 class="doc-name">February Campaign</h5>
+                    <span class="doc-size">5.82 MB</span>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#previewImage-1"><i class="fas fa-solid fa-eye"></i> Preview</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 p-4">
+            <div class="card card-comments card-box shadow card-block">
+                <div class="download-card d-flex flex-column">
+                    <img src="~/images/gallery.png" width="80" />
+                    <span class="doc-type">Image (PNG)</span>
+                    <h5 class="doc-name">Launch Campaign</h5>
+                    <span class="doc-size">543 KB</span>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#previewImage-2"><i class="fas fa-solid fa-eye"></i> Preview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="previewImage-1" tabindex="-1" role="dialog" aria-labelledby="previewImageLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="previewImageLabel">Campaign</h6>
+            </div>
+            <div class="modal-body">
+                <img src="~/images/February-Campagin.jpg" class="img-fluid" />
+            </div>
+            <div class="modal-footer">
+                <a href="~/images/February-Campagin.jpg" target="_blank" class="btn btn-primary"><i class="fas fa-solid fa-download"></i> Download</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="previewImage-2" tabindex="-1" role="dialog" aria-labelledby="previewImageLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="previewImageLabel">Campaign</h6>
+            </div>
+            <div class="modal-body">
+                <img src="~/images/Launch-campagin.jpg" class="img-fluid" />
+            </div>
+            <div class="modal-footer">
+                <a href="~/images/Launch-campagin.jpg" target="_blank" class="btn btn-primary"><i class="fas fa-solid fa-download"></i> Download</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="previewImage-3" tabindex="-1" role="dialog" aria-labelledby="previewImageLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="previewImageLabel">Campaign</h6>
+            </div>
+            <div class="modal-body">
+                <img src="~/images/Launch-campagin.jpg" class="img-fluid" />
+            </div>
+            <div class="modal-footer">
+                <a href="~/images/Launch-campagin.jpg" target="_blank" class="btn btn-primary"><i class="fas fa-solid fa-download"></i> Download</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script src="~/js/site.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#downloadsTable").DataTable();
+            loadData();
+            $('#reload').on('click', function () {
+                loadData();
+            });
+        });
+        function loadData() {
+            $('#viewAll').load('/app/brand/LoadAll');
+        }
+    </script>
+}

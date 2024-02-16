@@ -1,0 +1,26 @@
+[
+  {
+    "Name": "Starter",
+    "SubscriptionId": 15,
+    "Amount": 100.0,
+    "Duration": 1,
+    "DurationInterval": "Year",
+    "Description": "1 Year"
+  },
+  {
+    "Name": "Premium",
+    "SubscriptionId": 16,
+    "Amount": 300.0,
+    "Duration": 1,
+    "DurationInterval": "Year",
+    "Description": "1 Year"
+  },
+  {
+    "Name": "Platinum",
+    "SubscriptionId": 17,
+    "Amount": 1000.0,
+    "Duration": 1,
+    "DurationInterval": "Year",
+    "Description": "1 Year"
+  }
+]
